@@ -7,7 +7,7 @@ public class DiamondTests
     {
         var diamond = new Diamond('A');
 
-        var actual = diamond.ToString();
+        var actual = Act(diamond);
 
         Assert.Equal("A", actual);
     }
@@ -16,21 +16,21 @@ public class DiamondTests
     public void When_B_Then_should_print_top_line_of_A_surrounded_with_spaces()
     {
         var diamond = new Diamond('B');
-        var expected = " A ";
+        var expected = "_A_";
         
-        var actual = diamond.ToString().Split(Environment.NewLine)[0];
+        var actual = Act(diamond).Split(Environment.NewLine)[0];
         
         Assert.Equal(expected, actual);
     }
-    
+
     [Fact]
     public void When_B_Then_should_print_top_half()
     {
         var diamond = new Diamond('B');
-        var expected = @" A 
-B B";
+        var expected = @"_A_
+B_B".ReplaceLineEndings();
 
-        var actual = diamond.ToString();
+        var actual = Act(diamond);
         
         Assert.StartsWith(expected, actual);
     }
@@ -39,12 +39,17 @@ B B";
     public void When_B_Then_should_print_ABBA_diamond()
     {
         var diamond = new Diamond('B');
-        var expected = @" A 
-B B
- A";
+        var expected = @"_A_
+B_B
+_A_".ReplaceLineEndings();
 
-        var actual = diamond.ToString();
+        var actual = Act(diamond);
 
         Assert.Equal(expected, actual);
+    }
+
+    private static string Act(Diamond diamond)
+    {
+        return diamond.ToString().Replace(' ', '_');
     }
 }
