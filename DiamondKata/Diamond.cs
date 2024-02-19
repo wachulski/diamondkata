@@ -9,10 +9,10 @@ public class Diamond
 
     public Diamond(char letter)
     {
-        if (letter is < 'A' or > 'Z')
+        if (char.ToUpper(letter) is < 'A' or > 'Z')
             throw new ArgumentException("Letter must be a letter from A to Z");
         
-        _letter = letter;
+        _letter = char.ToUpper(letter);
         _alphaDistance = _letter - 'A';
     }
 
