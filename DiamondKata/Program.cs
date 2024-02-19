@@ -1,3 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using DiamondKata;
 
-Console.WriteLine("Hello, World!");
+if (args.Length == 0)
+    Console.WriteLine("Please provide a letter from A to Z");
+else
+    Console.WriteLine(new Diamond(args[0][0]));
