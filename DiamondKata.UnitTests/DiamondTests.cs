@@ -27,7 +27,7 @@ public class DiamondTests
     public void When_B_Then_should_print_ABBA_diamond()
     {
         var diamond = new Diamond('B');
-        var expected = @"A
+        var expected = @" A 
 B B
  A";
 
