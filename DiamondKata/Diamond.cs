@@ -20,23 +20,23 @@ public class Diamond
 
         var diamondBuilder = new StringBuilder();
 
+        var i = 0;
         var increment = 1;
-        for (var i = 0; i >= 0; i+=increment)
+        while (i >= 0)
         {
             var currentDiamondLetter = (char)('A' + i);
             var spacesAround = new string(' ', _alphaDistance - i);
             var diamondPart = i == 0
                 ? currentDiamondLetter.ToString()
                 : $"{currentDiamondLetter}{new string(' ', i * 2 - 1)}{currentDiamondLetter}";
-            diamondBuilder.Append(spacesAround).Append(diamondPart).Append(spacesAround);
-            
-            if (i > 0 || increment > 0)
-                diamondBuilder.AppendLine();
+            diamondBuilder.Append(spacesAround).Append(diamondPart).Append(spacesAround).AppendLine();
             
             if (i == _alphaDistance)
                 increment = -1;
+
+            i += increment;
         }
 
-        return diamondBuilder.ToString();
+        return diamondBuilder.ToString().TrimEnd('\n').TrimEnd('\r');
     }
 }
