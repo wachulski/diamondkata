@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace DiamondKata;
 
 public class Diamond
@@ -15,9 +17,17 @@ public class Diamond
     {
         if (_alphaDistance == 0)
             return _letter.ToString();
+
+        var diamondBuilder = new StringBuilder();
         
-        var spaces = new string(' ', _alphaDistance);
+        for (var i = 0; i <= _alphaDistance; i++)
+        {
+            var letter = (char)('A' + i);
+            var spaces = new string(' ', _alphaDistance - i);
+            var diamondPart = i == 0 ? letter.ToString() : $"{letter}{new string(' ', i * 2 - 1)}{letter}";
+            diamondBuilder.Append(spaces).Append(diamondPart).Append(spaces).AppendLine();
+        }
         
-        return $"{spaces}A{spaces}";
+        return diamondBuilder.ToString();
     }
 }
