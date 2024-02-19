@@ -13,6 +13,17 @@ public class DiamondTests
     }
 
     [Fact]
+    public void When_B_Then_should_print_top_line_of_A_surrounded_with_spaces()
+    {
+        var diamond = new Diamond('B');
+        var expected = " A ";
+        
+        var actual = diamond.ToString().Split(Environment.NewLine)[0];
+        
+        Assert.Equal(expected, actual);
+    }
+
+    [Fact]
     public void When_B_ie_many_parts_Then_should_print_ABBA_diamond()
     {
         var diamond = new Diamond('B');
