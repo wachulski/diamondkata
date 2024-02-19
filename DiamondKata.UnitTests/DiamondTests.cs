@@ -22,6 +22,18 @@ public class DiamondTests
         
         Assert.Equal(expected, actual);
     }
+    
+    [Fact]
+    public void When_B_Then_should_print_top_half()
+    {
+        var diamond = new Diamond('B');
+        var expected = @" A 
+B B";
+
+        var actual = diamond.ToString();
+        
+        Assert.StartsWith(expected, actual);
+    }
 
     [Fact]
     public void When_B_Then_should_print_ABBA_diamond()
