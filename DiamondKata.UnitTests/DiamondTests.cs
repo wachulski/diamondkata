@@ -109,6 +109,14 @@ _________________________A_________________________".ReplaceLineEndings();
         Assert.Equal(expected, actual);
     }
 
+    [Theory]
+    [InlineData('1')]
+    [InlineData('Ą')]
+    public void When_letter_is_not_alpha_char_Throws(char letter)
+    {
+        Assert.Throws<ArgumentException>(() => new Diamond(letter));
+    }
+
     private static string Act(Diamond diamond)
     {
         return diamond.ToString().Replace(' ', '_');
