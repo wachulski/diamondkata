@@ -117,6 +117,16 @@ _________________________A_________________________".ReplaceLineEndings();
         Assert.Throws<ArgumentException>(() => new Diamond(letter));
     }
 
+    [Fact]
+    public void When_lowercase_Then_should_be_supported()
+    {
+        var diamond = new Diamond('a');
+
+        var actual = Act(diamond);
+
+        Assert.Equal("A", actual);
+    }
+
     private static string Act(Diamond diamond)
     {
         return diamond.ToString().Replace(' ', '_');
